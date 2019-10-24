@@ -1,5 +1,7 @@
-class ServiceName < ApplicationRecord
+# frozen_string_literal: true
 
+class ServiceName < ApplicationRecord
   has_many :request_311s
-  validates :id, :service_name, presence: true
+  validates :service_name, presence: true
+  validates :id, presence: false
 end
