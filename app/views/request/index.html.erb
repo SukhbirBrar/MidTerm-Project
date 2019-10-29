@@ -1,7 +1,9 @@
-<h1>Request#index</h1>
-<p>Find me in app/views/request/index.html.erb</p>
-
-<% @request.each do |request|%>
-<p><%= request.date%>
-<%= request.service_area%>
-</p>
+<h1> Request 311 Services </h1>
+<% @requests.each do |request| %>
+<h4><%= request.neighbourhood %></h4>
+<p> <%= request.ward %> </p>
+<%end%> %>
+<%#
+<% @names.each do |name| %>
+<%# <p> <%= name.service_name %></p>
+<%# <% end %> %> %>

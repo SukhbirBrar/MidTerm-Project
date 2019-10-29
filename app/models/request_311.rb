@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Request311 < ApplicationRecord
-  belongs_to :service_names, :service_areas
+  self.table_name = 'request_311s'
+  belongs_to :service_name
+  belongs_to :service_area
 
   validates :service_name, :service_area, presence: true
-  validates :ward, :neighborhood
+  validates :ward, :neighbourhood, presence: true
 end

@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_210957) do
+ActiveRecord::Schema.define(version: 2019_10_25_231529) do
 
   create_table "request_311s", force: :cascade do |t|
-    t.string "service_name"
-    t.string "service_area"
     t.string "ward"
-    t.string "neighborhood"
+    t.string "neighbourhood"
+    t.integer "service_name_id", null: false
+    t.integer "service_area_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_area_id"], name: "index_request_311s_on_service_area_id"
+    t.index ["service_name_id"], name: "index_request_311s_on_service_name_id"
   end
 
   create_table "service_areas", force: :cascade do |t|
@@ -34,4 +36,6 @@ ActiveRecord::Schema.define(version: 2019_10_10_210957) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "request_311s", "service_areas"
+  add_foreign_key "request_311s", "service_names"
 end
